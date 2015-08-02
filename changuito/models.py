@@ -2,8 +2,15 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.contenttypes.models import ContentType
 
+# try:
+#     from django.conf import settings
+#     User = settings.AUTH_USER_MODEL
+# except ImportError:
+#     from django.contrib.auth.models import User
+
+from django.conf import settings
 try:
-    from django.conf import settings
+    from django.contrib.auth import get_user_model
     User = settings.AUTH_USER_MODEL
 except ImportError:
     from django.contrib.auth.models import User
